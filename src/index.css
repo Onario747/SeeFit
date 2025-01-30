@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Mada:wght@200..900&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #0a0e00;
+    --text-primary: #ffffff;
+    --primary-600: #ffffff;
+  }
+
+  :root[class~="dark"] {
+    --background: #0a0e00;
+    --text-primary: #ffffff;
+    --primary-600: #ffffff;
+  }
+
+  :root:not([class~="dark"]) {
+    --background: #ffffff;
+    --text-primary: #0a0e00;
+    --primary-600: #0a0e00;
+  }
+}
+
+@layer components {
+  .max-container {
+    @apply w-full max-w-[1440px] mx-auto px-4 md:px-8;
+  }
+
+  .padding-x {
+    @apply lg:px-[4rem] md:px-[1.8rem] px-[0.8rem];
+  }
+}
+
+@theme {
+  --font-mada: "Mada", serif;
+  --color-primary: #e3e4e9;
+}
+
+body {
+  font-family: var(--font-mada);
+  background-color: var(--background);
+  height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.max-container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.padding-x {
+  @apply lg:px-[4rem] md:px-[1.8rem] px-[0.8rem];
+}
