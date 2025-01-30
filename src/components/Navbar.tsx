@@ -1,6 +1,6 @@
 // import { NavLink } from "react-router-dom";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import Button from "./Button";
 import ThemeToggle from "./ThemeToggle";
@@ -35,6 +35,30 @@ const navLinks = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check initial theme
+    const isDark = document.documentElement.classList.contains("dark");
+    setIsDarkMode(isDark);
+
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          const isDark = document.documentElement.classList.contains("dark");
+          setIsDarkMode(isDark);
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header
@@ -43,7 +67,13 @@ const Navbar = () => {
       } transition-colors duration-300`}
     >
       <div className="max-container padding-x flex items-center justify-between py-4">
-        <img src="/assets/svg/logo.svg" className="w-30" alt="Logo" />
+        <img
+          src={`/assets/svg/${
+            isDarkMode || isMenuOpen ? "logo.svg" : "colored-logo.svg"
+          }`}
+          className="w-30"
+          alt="Logo"
+        />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">

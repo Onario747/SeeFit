@@ -12,7 +12,10 @@ import Footer from "./components/footer";
 
 function App() {
   return (
-    <main className="min-h-screen relative overflow-hidden">
+    <main
+      className="min-h-screen relative overflow-hidden"
+      style={{ backgroundColor: "var(--background)" }}
+    >
       <img
         src="/assets/svg/hero-light1.svg"
         alt="hero-bg"
