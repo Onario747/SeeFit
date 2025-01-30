@@ -35,22 +35,15 @@ const navLinks = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 ${
-        isMenuOpen
-          ? "bg-black dark:bg-black"
-          : "bg-white/80 dark:bg-primary-bg/80 backdrop-blur-lg"
+        isMenuOpen ? "bg-black" : "bg-primary-bg/80 backdrop-blur-lg"
       } transition-colors duration-300`}
     >
       <div className="max-container padding-x flex items-center justify-between py-4">
-        <img
-          src={`/assets/svg/${isDarkMode ? "logo.svg" : "colored-logo.svg"}`}
-          className="w-30"
-          alt="Logo"
-        />
+        <img src="/assets/svg/logo.svg" className="w-30" alt="Logo" />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6">
