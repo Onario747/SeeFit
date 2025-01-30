@@ -15,12 +15,12 @@ export default {
     extend: {
       keyframes: {
         scroll: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc(-150px * 4 - 2rem * 4))' },
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-150px * 4 - 2rem * 4))" },
         },
       },
       animation: {
-        scroll: 'scroll 15s linear infinite',
+        scroll: "scroll 15s linear infinite",
       },
     },
   },
